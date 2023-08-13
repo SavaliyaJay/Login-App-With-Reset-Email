@@ -1,9 +1,15 @@
-import Image from 'next/image'
+"use client";
+import { useEffect } from "react";
+import Image from "next/image";
+import { Toaster, toast } from "react-hot-toast";
+import UserName from "./(pages)/UserName/UserName";
 
 export default function Home() {
-  return (
-   <p className='mt-10'>
-    User Name
-   </p>
-  )
+   return (
+    <>
+      <div>
+        <UserName />
+      </div>
+    </>
+  );
 }
