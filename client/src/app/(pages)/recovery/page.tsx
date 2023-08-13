@@ -1,8 +1,11 @@
 import React from 'react'
+import Recovery from './Recovery'
 
 const page = () => {
   return (
-    <div>Recovery</div>
+    <>
+      <Recovery />
+    </>
   )
 }
 
