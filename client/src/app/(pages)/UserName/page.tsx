@@ -1,11 +1,9 @@
 import React from 'react'
-import Password from './Password'
+import UserName from './UserName'
 
 const page = () => {
   return (
-    <>
-      <Password />
-    </>
+    <UserName />
   )
 }
 
