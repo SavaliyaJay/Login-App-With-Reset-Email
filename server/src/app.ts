@@ -6,6 +6,9 @@ const connectDB = require('./database/conn');
 const router = require('./router/route');
 require("dotenv/config");
 const app = express();
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+
 // Middlewares
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -33,3 +36,22 @@ connectDB().then(() => {
   // api router 
   app.use("/api", router);
 });
+
+const swaggerDefinition = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Node Swagger API',
+            version: '1.0.0',
+        },
+        servers: [
+            {
+                url: 'http://localhost:8081/api',
+            },
+        ],
+    },
+    apis: ['./src/controller/appController.ts', './src/router/route'],
+};
+
+const swaggerSpec = swaggerJSDoc(swaggerDefinition);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));

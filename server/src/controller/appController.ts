@@ -2,6 +2,41 @@ import { Request, Response } from "express";
 const UserModel = require("../model/userModel");
 const bcrypt = require("bcrypt");
 
+/**
+ *
+ * @swagger
+ * /register:
+ *  post:
+ *      description: Use to register a user
+ *      requestBody:
+ *          description: Optional description in *Markdown*
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          username:
+ *                              type: string
+ *                              description: The user's name.
+ *                              example: John Doe
+ *                          password:
+ *                              type: string
+ *                              description: The user's password.
+ *                              example: abc@124
+ *                          profile:
+ *                              type: string
+ *                              description: The user's profile URL.
+ *                              example: ""
+ *                          email:
+ *                              type: string
+ *                              description: The user's email.
+ *                              example: abc@gmail.com
+ *      responses:
+ *          '200':
+ *              description: A successful response
+ */
+
 const register = async (req: Request, res: Response) => {
   try {
     const { username, password, profile, email } = req.body;
